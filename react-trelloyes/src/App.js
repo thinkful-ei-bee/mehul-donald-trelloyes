@@ -4,14 +4,17 @@ import List from './composition/list.js';
 import STORE from './STORE.js';
 
 function App(STORE) {
-  // console.log(STORE);
-  let mappedList = STORE.lists.map(function() {
-    let header = this.header;
-    let cards = this.cardIds.find(x => x === STORE.allCards[x]);
-    return List(header,cards);
+  // console.log(STORE.lists);
+  let mappedList = STORE.lists.map(obj => {
+    let header = obj.header;
+    let newArray =[];
+    for(let x = 0; x<obj.cardIds.length;x++){ 
+      newArray.push(STORE.allCards[obj.cardIds[x]]);
+    }
+    return List(header,newArray);
     } 
     );
-  mappedList.lists.join('');
+  mappedList.join('');
   return (
     <main className='App'>
       {mappedList}

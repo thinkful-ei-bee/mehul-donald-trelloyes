@@ -4,7 +4,6 @@ import Card from './card.js';
 function List(header, cards) {
     let mappedCards = cards.map(item => Card(item.title, item.content))
     mappedCards.join('');
-    console.log(cards);
     return (
         <div className="App-list">
         <section className="List">
